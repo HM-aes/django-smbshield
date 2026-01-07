@@ -1,0 +1,309 @@
+{% extends 'pages/dashboard/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto space-y-6">
+    <!-- Welcome Section -->
+    <section class="welcome-hero animate-fade-in-up">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+                <h2 class="text-xl font-semibold text-white mb-1">Welcome back, {{ user.display_name }}</h2>
+                <p class="text-zinc-200 text-sm">
+                    Your AI-powered cybersecurity education hub. Learn OWASP Top 10 and protect your SMB.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="{% url 'education:chat' %}" class="btn-primary">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                    Chat with Professor Shield
+                </a>
+                {% if not user.is_pro %}
+                <a href="{% url 'core:pricing' %}" class="btn-outline">
+                    Upgrade to Pro
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Stats -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up animation-delay-100">
+        <div class="stat-card">
+            <div class="stat-value">10</div>
+            <div class="stat-label">OWASP Risks</div>
+            <div class="stat-sublabel">Full curriculum</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">50+</div>
+            <div class="stat-label">AI Lessons</div>
+            <div class="stat-sublabel">Interactive learning</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ total_quizzes|default:"0" }}</div>
+            <div class="stat-label">Quizzes Passed</div>
+            <div class="stat-sublabel">Your progress</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ streak_days|default:"0" }}</div>
+            <div class="stat-label">Day Streak</div>
+            <div class="stat-sublabel">Keep learning</div>
+        </div>
+    </section>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Main Content (2 cols) -->
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Latest AI Security News -->
+            <section class="animate-fade-in-up animation-delay-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="section-header mb-0">Latest AI Security News</h3>
+                    <a href="{% url 'news:index' %}" class="text-xs text-zinc-400 hover:text-white transition-colors">View All →</a>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3">
+                    {% for article in latest_news %}
+                    <a href="{% url 'news:detail' article.id %}" class="news-card group">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="news-badge">{{ article.category|default:"Security" }}</span>
+                            <span class="text-xs text-zinc-500">{{ article.published_at|timesince }} ago</span>
+                        </div>
+                        <h4 class="font-medium text-sm text-zinc-200 group-hover:text-white transition-colors line-clamp-2">
+                            {{ article.title }}
+                        </h4>
+                        <div class="flex items-center gap-2 mt-2 text-xs text-zinc-500">
+                            <span>{{ article.source|default:"SMBShield" }}</span>
+                        </div>
+                    </a>
+                    {% empty %}
+                    <!-- Demo news cards when no data -->
+                    <div class="news-card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="news-badge">Compliance</span>
+                            <span class="text-xs text-zinc-500">2h ago</span>
+                        </div>
+                        <h4 class="font-medium text-sm text-zinc-200 line-clamp-2">
+                            NIS2 Directive: What European SMBs Need to Know for 2025
+                        </h4>
+                        <div class="flex items-center gap-2 mt-2 text-xs text-zinc-500">
+                            <span>TechCrunch</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="news-badge">Threat</span>
+                            <span class="text-xs text-zinc-500">5h ago</span>
+                        </div>
+                        <h4 class="font-medium text-sm text-zinc-200 line-clamp-2">
+                            New Ransomware Variant Targets SMB Networks Across EU
+                        </h4>
+                        <div class="flex items-center gap-2 mt-2 text-xs text-zinc-500">
+                            <span>SecurityWeek</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="news-badge">AI</span>
+                            <span class="text-xs text-zinc-500">8h ago</span>
+                        </div>
+                        <h4 class="font-medium text-sm text-zinc-200 line-clamp-2">
+                            How AI is Revolutionizing Cybersecurity Training
+                        </h4>
+                        <div class="flex items-center gap-2 mt-2 text-xs text-zinc-500">
+                            <span>Forbes</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="news-badge">GDPR</span>
+                            <span class="text-xs text-zinc-500">1d ago</span>
+                        </div>
+                        <h4 class="font-medium text-sm text-zinc-200 line-clamp-2">
+                            GDPR Enforcement Trends: Record Fines for Data Breaches
+                        </h4>
+                        <div class="flex items-center gap-2 mt-2 text-xs text-zinc-500">
+                            <span>ZDNet</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Professor Shield Card -->
+            <section class="professor-card animate-fade-in-up animation-delay-300">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-white mb-2">Professor Shield</h3>
+                <p class="text-zinc-300 text-sm mb-4 max-w-md mx-auto">
+                    Your AI-powered security tutor. Ask questions about OWASP Top 10, get personalized learning recommendations, and master cybersecurity.
+                </p>
+                <a href="{% url 'education:chat' %}" class="btn-primary">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                    Start Learning
+                </a>
+            </section>
+        </div>
+
+        <!-- Sidebar (1 col) -->
+        <div class="space-y-6">
+            <!-- Vulnerability Tracker -->
+            <section class="animate-fade-in-up animation-delay-200">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="section-header mb-0">Vulnerability Tracker</h3>
+                    {% if not user.is_pro %}
+                    <span class="text-xs bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded border border-zinc-700">Pro</span>
+                    {% endif %}
+                </div>
+                
+                {% if user.is_pro %}
+                <div class="space-y-2">
+                    {% for cve in cve_list %}
+                    <div class="cve-card">
+                        <div>
+                            <div class="text-sm font-mono font-medium text-white">{{ cve.id }}</div>
+                            <div class="text-xs text-zinc-500">{{ cve.name }}</div>
+                        </div>
+                        <span class="cve-score cve-score-{{ cve.severity }}">{{ cve.score }}</span>
+                    </div>
+                    {% empty %}
+                    <div class="cve-card">
+                        <div>
+                            <div class="text-sm font-mono font-medium text-white">CVE-2025-0089</div>
+                            <div class="text-xs text-zinc-400">Authentication Bypass</div>
+                        </div>
+                        <span class="cve-score cve-score-critical">9.8</span>
+                    </div>
+                    <div class="cve-card">
+                        <div>
+                            <div class="text-sm font-mono font-medium text-white">CVE-2025-0102</div>
+                            <div class="text-xs text-zinc-400">SQL Injection</div>
+                        </div>
+                        <span class="cve-score cve-score-high">8.1</span>
+                    </div>
+                    <div class="cve-card">
+                        <div>
+                            <div class="text-sm font-mono font-medium text-white">CVE-2025-0115</div>
+                            <div class="text-xs text-zinc-400">XSS Vulnerability</div>
+                        </div>
+                        <span class="cve-score cve-score-medium">6.5</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- Blurred preview for Free users -->
+                <div class="relative">
+                    <div class="space-y-2 blur-sm opacity-40 pointer-events-none">
+                        <div class="cve-card">
+                            <div>
+                                <div class="text-sm font-mono font-medium text-white">CVE-2025-0089</div>
+                                <div class="text-xs text-zinc-400">Authentication Bypass</div>
+                            </div>
+                            <span class="cve-score cve-score-critical">9.8</span>
+                        </div>
+                        <div class="cve-card">
+                            <div>
+                                <div class="text-sm font-mono font-medium text-white">CVE-2025-0102</div>
+                                <div class="text-xs text-zinc-400">SQL Injection</div>
+                            </div>
+                            <span class="cve-score cve-score-high">8.1</span>
+                        </div>
+                        <div class="cve-card">
+                            <div>
+                                <div class="text-sm font-mono font-medium text-white">CVE-2025-0115</div>
+                                <div class="text-xs text-zinc-400">XSS Vulnerability</div>
+                            </div>
+                            <span class="cve-score cve-score-medium">6.5</span>
+                        </div>
+                    </div>
+                    <div class="lock-overlay">
+                        <svg class="w-6 h-6 text-zinc-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <a href="{% url 'core:pricing' %}" class="btn-primary text-sm">
+                            Unlock with Pro
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="animate-fade-in-up animation-delay-300">
+                <h3 class="section-header">Quick Actions</h3>
+                <div class="space-y-2">
+                    <a href="{% url 'assessment:home' %}" class="feature-card group">
+                        <div class="feature-icon">
+                            <svg class="w-5 h-5 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-medium text-sm text-zinc-200 group-hover:text-white transition-colors">Take a Quiz</div>
+                            <div class="text-xs text-zinc-500">Test your knowledge</div>
+                        </div>
+                        <svg class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="{% url 'education:home' %}" class="feature-card group">
+                        <div class="feature-icon">
+                            <svg class="w-5 h-5 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-medium text-sm text-zinc-200 group-hover:text-white transition-colors">Browse Lessons</div>
+                            <div class="text-xs text-zinc-500">OWASP Top 10 curriculum</div>
+                        </div>
+                        <svg class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="{% url 'news:index' %}" class="feature-card group">
+                        <div class="feature-icon">
+                            <svg class="w-5 h-5 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-medium text-sm text-zinc-200 group-hover:text-white transition-colors">Security News</div>
+                            <div class="text-xs text-zinc-500">Daily threat intel</div>
+                        </div>
+                        <svg class="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Learning Progress -->
+            <section class="animate-fade-in-up animation-delay-400">
+                <h3 class="section-header">Your Progress</h3>
+                <div class="dashboard-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm text-zinc-300">Knowledge Score</span>
+                        <span class="text-lg font-semibold text-white">{{ knowledge_score|floatformat:0|default:"0" }}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: {{ knowledge_score|default:0 }}%"></div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-zinc-400">Lessons completed</span>
+                        <span class="font-medium text-zinc-200">{{ total_lessons|default:"0" }}</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

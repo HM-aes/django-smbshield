@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+
+{% block title %}OWASP Top 10 Guide - SMBShield{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+        <div class="fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
+            <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span class="text-sm font-medium text-green-400">Free Resource</span>
+        </div>
+
+        <h1 class="fade-up font-display text-5xl md:text-6xl font-bold mb-6" data-delay="0.1">
+            OWASP Top 10<br>
+            <span class="text-gradient-green">Guide for SMBs</span>
+        </h1>
+
+        <p class="fade-up text-xl text-zinc-400 max-w-2xl mx-auto" data-delay="0.2">
+            The 10 most critical web application security risks, explained simply for business owners and their teams.
+        </p>
+    </div>
+
+    <!-- What is OWASP -->
+    <section class="fade-up mb-16" data-delay="0.3">
+        <div class="glass-card rounded-2xl p-8">
+            <h2 class="font-display text-2xl font-bold mb-4">What is OWASP?</h2>
+            <p class="text-zinc-300 leading-relaxed">
+                The <strong>Open Web Application Security Project (OWASP)</strong> is a nonprofit foundation that works to improve software security. Their "Top 10" is the gold standard reference for web application security risks, updated regularly based on real-world attack data. Understanding these risks helps protect your business from the most common and dangerous attacks.
+            </p>
+        </div>
+    </section>
+
+    <!-- OWASP Top 10 List -->
+    <section class="fade-up mb-16" data-delay="0.4">
+        <h2 class="font-display text-3xl font-bold mb-8 text-center">The OWASP Top 10 (2021)</h2>
+
+        <div class="space-y-4">
+            <!-- A01 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-red-400">01</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Broken Access Control</h3>
+                        <p class="text-zinc-400 mb-3">When users can act outside their intended permissions. For example, a regular user accessing admin features or viewing other users' data.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-red-500/10 text-red-400 rounded">Critical</span>
+                            <span class="text-zinc-500">Most common vulnerability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A02 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-orange-400">02</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Cryptographic Failures</h3>
+                        <p class="text-zinc-400 mb-3">Failures related to cryptography that lead to exposure of sensitive data. This includes weak encryption, storing passwords in plain text, or transmitting data without HTTPS.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">High</span>
+                            <span class="text-zinc-500">Data exposure risk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A03 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-orange-400">03</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Injection</h3>
+                        <p class="text-zinc-400 mb-3">When untrusted data is sent to an interpreter as part of a command or query. SQL injection, NoSQL injection, and command injection are common examples.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded">High</span>
+                            <span class="text-zinc-500">Classic attack vector</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A04 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-yellow-400">04</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Insecure Design</h3>
+                        <p class="text-zinc-400 mb-3">Flaws in the design and architecture of an application. This includes missing security controls that should have been designed from the start.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">Medium</span>
+                            <span class="text-zinc-500">New in 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A05 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-yellow-400">05</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Security Misconfiguration</h3>
+                        <p class="text-zinc-400 mb-3">Improperly configured permissions, unnecessary features enabled, default accounts unchanged, or overly verbose error messages.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">Medium</span>
+                            <span class="text-zinc-500">Easy to prevent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A06 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-yellow-400">06</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Vulnerable & Outdated Components</h3>
+                        <p class="text-zinc-400 mb-3">Using components with known vulnerabilities, not keeping libraries updated, or not scanning for vulnerabilities regularly.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-yellow-500/10 text-yellow-400 rounded">Medium</span>
+                            <span class="text-zinc-500">Supply chain risk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A07 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-blue-400">07</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Identification & Authentication Failures</h3>
+                        <p class="text-zinc-400 mb-3">Weaknesses in authentication mechanisms: weak passwords, missing MFA, session fixation, or improper session management.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">Important</span>
+                            <span class="text-zinc-500">Account takeover risk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A08 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-blue-400">08</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Software & Data Integrity Failures</h3>
+                        <p class="text-zinc-400 mb-3">Code and infrastructure that doesn't protect against integrity violations: insecure CI/CD pipelines, auto-updates without verification, or insecure deserialization.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded">Important</span>
+                            <span class="text-zinc-500">New in 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A09 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-purple-400">09</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Security Logging & Monitoring Failures</h3>
+                        <p class="text-zinc-400 mb-3">Insufficient logging, detection, monitoring, and active response. Without proper logging, breaches can go undetected for months.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded">Moderate</span>
+                            <span class="text-zinc-500">Detection gap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A10 -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="font-mono font-bold text-purple-400">10</span>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-xl font-bold mb-2">Server-Side Request Forgery (SSRF)</h3>
+                        <p class="text-zinc-400 mb-3">When a web application fetches a remote resource without validating the user-supplied URL. Attackers can use this to access internal systems.</p>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded">Moderate</span>
+                            <span class="text-zinc-500">New in 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fade-up text-center" data-delay="0.5">
+        <div class="glass-card rounded-3xl p-12 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"></div>
+            <div class="relative">
+                <h2 class="font-display text-3xl font-bold mb-4">Want to Learn More?</h2>
+                <p class="text-zinc-400 mb-8 max-w-xl mx-auto">
+                    Our full curriculum includes detailed lessons, real-world examples, and AI-powered assessments for each vulnerability.
+                </p>
+                <a href="{% url 'core:signup' %}" class="inline-block px-10 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-green-500/25">
+                    Start Learning Free
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

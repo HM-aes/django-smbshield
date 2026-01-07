@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} - SMBShield Blog{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+        <a href="{% url 'blog:index' %}" class="fade-up inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            All Posts
+        </a>
+
+        <h1 class="fade-up font-display text-5xl md:text-6xl font-bold mb-6 text-white" data-delay="0.1">
+            {{ category.name }}
+        </h1>
+
+        {% if category.description %}
+        <p class="fade-up text-xl text-zinc-400 max-w-2xl mx-auto" data-delay="0.2">
+            {{ category.description }}
+        </p>
+        {% endif %}
+    </div>
+
+    <!-- Blog Posts -->
+    <div class="fade-up space-y-8" data-delay="0.3">
+        {% for post in posts %}
+        <article class="glass-card rounded-2xl p-6 hover:bg-white/5 transition-all group">
+            <div class="flex flex-col md:flex-row gap-6">
+                {% if post.featured_image %}
+                <div class="md:w-64 flex-shrink-0">
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-40 object-cover rounded-xl">
+                </div>
+                {% endif %}
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-xs text-zinc-500">{{ post.published_at|date:"M d, Y" }}</span>
+                        <span class="text-xs text-zinc-600">{{ post.reading_time }} min read</span>
+                    </div>
+
+                    <h2 class="font-display text-xl font-bold mb-2 text-white group-hover:text-green-400 transition-colors">
+                        <a href="{% url 'blog:detail' post.slug %}">{{ post.title }}</a>
+                    </h2>
+
+                    <p class="text-zinc-400 text-sm mb-4 line-clamp-2">{{ post.excerpt }}</p>
+
+                    <a href="{% url 'blog:detail' post.slug %}" class="text-green-400 text-sm font-medium hover:text-green-300 transition-colors">
+                        Read more &rarr;
+                    </a>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <div class="text-center py-16">
+            <div class="w-16 h-16 mx-auto rounded-full bg-zinc-800 flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2 text-white">No posts in this category</h3>
+            <p class="text-zinc-500">Check back soon for more content.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+    <nav class="fade-up mt-12 flex justify-center gap-2" data-delay="0.4">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition-colors">
+            &larr; Previous
+        </a>
+        {% endif %}
+
+        <span class="px-4 py-2 text-zinc-500">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition-colors">
+            Next &rarr;
+        </a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

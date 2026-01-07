@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+{% block title %}Security Toolkit - SMBShield{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+        <div class="fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="text-sm font-medium text-blue-400">Free Resources</span>
+        </div>
+
+        <h1 class="fade-up font-display text-5xl md:text-6xl font-bold mb-6" data-delay="0.1">
+            Security<br>
+            <span class="text-gradient-green">Toolkit</span>
+        </h1>
+
+        <p class="fade-up text-xl text-zinc-400 max-w-2xl mx-auto" data-delay="0.2">
+            Free tools, templates, and checklists to help secure your SMB.
+            No signup required.
+        </p>
+    </div>
+
+    <!-- Tools Grid -->
+    <section class="fade-up mb-16" data-delay="0.3">
+        <h2 class="font-display text-2xl font-bold mb-8">Checklists & Templates</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Security Assessment Checklist -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all group">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display text-lg font-bold mb-2 group-hover:text-green-400 transition-colors">Security Assessment Checklist</h3>
+                        <p class="text-zinc-400 text-sm mb-4">50+ questions to evaluate your current security posture. Perfect for quarterly reviews.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-zinc-500">PDF, 8 pages</span>
+                            <span class="text-green-400 text-sm font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Incident Response Template -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all group">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display text-lg font-bold mb-2 group-hover:text-red-400 transition-colors">Incident Response Plan Template</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Step-by-step guide for handling security incidents. Customizable for your team.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-zinc-500">DOCX, editable</span>
+                            <span class="text-green-400 text-sm font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password Policy Template -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all group">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display text-lg font-bold mb-2 group-hover:text-purple-400 transition-colors">Password Policy Template</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Modern password policy aligned with NIST guidelines. Ready to implement.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-zinc-500">PDF, 3 pages</span>
+                            <span class="text-green-400 text-sm font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vendor Security Questionnaire -->
+            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-all group">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Vendor Security Questionnaire</h3>
+                        <p class="text-zinc-400 text-sm mb-4">Questions to ask your vendors about their security practices before signing contracts.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-zinc-500">PDF, 5 pages</span>
+                            <span class="text-green-400 text-sm font-medium">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Tools -->
+    <section class="fade-up mb-16" data-delay="0.4">
+        <h2 class="font-display text-2xl font-bold mb-8">Recommended Free Tools</h2>
+
+        <div class="glass-card rounded-2xl overflow-hidden">
+            <div class="divide-y divide-zinc-800">
+                <!-- Password Managers -->
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-green-500/10 text-green-400 rounded text-xs font-medium">Password Management</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Password Managers</h3>
+                    <p class="text-zinc-400 text-sm mb-3">Stop using sticky notes. These tools generate and store strong, unique passwords.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm text-zinc-300">Bitwarden (free tier)</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">1Password (business)</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">KeePassXC (open source)</span>
+                    </div>
+                </div>
+
+                <!-- MFA Apps -->
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-blue-500/10 text-blue-400 rounded text-xs font-medium">Multi-Factor Auth</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">MFA Authenticator Apps</h3>
+                    <p class="text-zinc-400 text-sm mb-3">Add a second layer of security to all your accounts. SMS is not enough.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm text-zinc-300">Authy</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">Microsoft Authenticator</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">Google Authenticator</span>
+                    </div>
+                </div>
+
+                <!-- VPNs -->
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-purple-500/10 text-purple-400 rounded text-xs font-medium">Network Security</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">VPN Services</h3>
+                    <p class="text-zinc-400 text-sm mb-3">Encrypt your internet connection, especially on public WiFi.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm text-zinc-300">Tailscale (business)</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">Mullvad (privacy)</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">WireGuard (self-host)</span>
+                    </div>
+                </div>
+
+                <!-- Email Security -->
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-2 py-1 bg-orange-500/10 text-orange-400 rounded text-xs font-medium">Email Security</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Email Security Tools</h3>
+                    <p class="text-zinc-400 text-sm mb-3">Protect against phishing and email-based attacks.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-sm text-zinc-300">Have I Been Pwned (breach check)</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">DMARC Analyzer</span>
+                        <span class="text-zinc-600">|</span>
+                        <span class="text-sm text-zinc-300">Mail-Tester</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Wins -->
+    <section class="fade-up mb-16" data-delay="0.5">
+        <h2 class="font-display text-2xl font-bold mb-8">Quick Security Wins</h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="w-12 h-12 mx-auto rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+                    <span class="font-mono font-bold text-green-400">1</span>
+                </div>
+                <h3 class="font-semibold mb-2">Enable MFA Everywhere</h3>
+                <p class="text-zinc-400 text-sm">Blocks 99% of automated attacks. Start with email and banking.</p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="w-12 h-12 mx-auto rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+                    <span class="font-mono font-bold text-green-400">2</span>
+                </div>
+                <h3 class="font-semibold mb-2">Use a Password Manager</h3>
+                <p class="text-zinc-400 text-sm">One strong master password, unique passwords for everything else.</p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="w-12 h-12 mx-auto rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+                    <span class="font-mono font-bold text-green-400">3</span>
+                </div>
+                <h3 class="font-semibold mb-2">Keep Software Updated</h3>
+                <p class="text-zinc-400 text-sm">Enable automatic updates. Most breaches exploit known vulnerabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fade-up text-center" data-delay="0.6">
+        <div class="glass-card rounded-3xl p-12 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="relative">
+                <h2 class="font-display text-3xl font-bold mb-4">Need More Guidance?</h2>
+                <p class="text-zinc-400 mb-8 max-w-xl mx-auto">
+                    Our AI tutors can help you implement these tools and create custom security policies for your business.
+                </p>
+                <a href="{% url 'core:signup' %}" class="inline-block px-10 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-green-500/25">
+                    Get Personalized Help
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}Trial Ended - SMBShield{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-md w-full text-center">
+        <!-- Clock Icon -->
+        <div class="fade-up mb-8">
+            <div class="w-20 h-20 mx-auto rounded-full bg-zinc-800/50 flex items-center justify-center">
+                <svg class="w-10 h-10 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="fade-up font-display text-3xl md:text-4xl font-bold mb-4" data-delay="0.1">
+            Your Trial Has Ended
+        </h1>
+        <p class="fade-up text-zinc-400 mb-8" data-delay="0.2">
+            We hope you enjoyed exploring SMBShield! Your 30-day trial is now complete.
+        </p>
+
+        <!-- Still Available Section -->
+        <div class="fade-up glass-card rounded-2xl p-6 mb-8 text-left" data-delay="0.3">
+            <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">What's Still Available</h3>
+            <ul class="space-y-3">
+                <li class="flex items-center gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Your dashboard and progress</span>
+                </li>
+                <li class="flex items-center gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>OWASP Module A01 - Broken Access Control</span>
+                </li>
+                <li class="flex items-center gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>OWASP Module A02 - Cryptographic Failures</span>
+                </li>
+                <li class="flex items-center gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Public cybersecurity news</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Now Locked Section -->
+        <div class="fade-up glass-card rounded-2xl p-6 mb-8 text-left border border-zinc-700" data-delay="0.4">
+            <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Pro Features Now Locked</h3>
+            <ul class="space-y-3">
+                <li class="flex items-center gap-3 text-zinc-500">
+                    <svg class="w-5 h-5 text-zinc-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <span>Professor Shield AI Tutor</span>
+                </li>
+                <li class="flex items-center gap-3 text-zinc-500">
+                    <svg class="w-5 h-5 text-zinc-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <span>OWASP Modules A03 - A10</span>
+                </li>
+                <li class="flex items-center gap-3 text-zinc-500">
+                    <svg class="w-5 h-5 text-zinc-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <span>AI-Generated Quizzes</span>
+                </li>
+                <li class="flex items-center gap-3 text-zinc-500">
+                    <svg class="w-5 h-5 text-zinc-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <span>Daily Threat Intelligence</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="fade-up space-y-4" data-delay="0.5">
+            <a href="{% url 'core:pricing' %}" class="block w-full px-6 py-4 bg-white text-zinc-900 rounded-xl font-semibold hover:bg-zinc-100 transition-all">
+                Upgrade to Pro - $99/month
+            </a>
+            <a href="{% url 'dashboard:home' %}" class="block w-full px-6 py-3 border border-zinc-700 rounded-xl text-zinc-300 hover:bg-zinc-800 transition-all font-medium">
+                Continue with Free Access
+            </a>
+        </div>
+
+        <!-- Special Offer -->
+        <p class="fade-up text-sm text-zinc-500 mt-6" data-delay="0.6">
+            Questions? <a href="mailto:support@smbshield.eu" class="text-zinc-300 hover:text-white underline">Contact us</a> for a personalized demo.
+        </p>
+    </div>
+</div>
+{% endblock %}

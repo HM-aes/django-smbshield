@@ -1,0 +1,91 @@
+{% extends 'pages/dashboard/base.html' %}
+
+{% block title %}My Progress{% endblock %}
+{% block page_title %}My Progress{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto space-y-6">
+    <!-- Overall Stats -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up">
+        <div class="stat-card">
+            <div class="stat-value">{{ total_lessons|default:"0" }}</div>
+            <div class="stat-label">Lessons Completed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ total_quizzes|default:"0" }}</div>
+            <div class="stat-label">Quizzes Passed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ knowledge_score|floatformat:0|default:"0" }}%</div>
+            <div class="stat-label">Knowledge Score</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ streak_days|default:"0" }}</div>
+            <div class="stat-label">Day Streak</div>
+        </div>
+    </section>
+
+    <!-- Module Progress -->
+    <section class="dashboard-card animate-fade-in-up animation-delay-100">
+        <h3 class="section-header">OWASP Module Progress</h3>
+        
+        <div class="space-y-3">
+            {% for item in progress_data %}
+            <div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center">
+                            <span class="text-xs font-mono font-semibold text-zinc-300">{{ item.module.code }}</span>
+                        </div>
+                        <div>
+                            <div class="font-medium text-white text-sm">{{ item.module.name }}</div>
+                            <div class="text-xs text-zinc-500">{{ item.completed }} / {{ item.total }} lessons</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-semibold {% if item.percentage == 100 %}text-white{% else %}text-zinc-400{% endif %}">
+                            {{ item.percentage|floatformat:0 }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ item.percentage }}%"></div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center py-8 text-zinc-500">
+                <p>No modules available yet. Check back soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Recent Quiz History -->
+    <section class="dashboard-card animate-fade-in-up animation-delay-200">
+        <h3 class="section-header">Recent Quiz Results</h3>
+        
+        <div class="space-y-2">
+            {% for attempt in quiz_history %}
+            <div class="flex items-center justify-between p-4 rounded-lg {% if attempt.passed %}bg-zinc-800 border border-zinc-700{% else %}bg-zinc-900/50 border border-zinc-800{% endif %}">
+                <div>
+                    <div class="font-medium text-white text-sm">{{ attempt.quiz.title }}</div>
+                    <div class="text-xs text-zinc-500">{{ attempt.completed_at|timesince }} ago</div>
+                </div>
+                <div class="text-right">
+                    <div class="text-lg font-semibold {% if attempt.passed %}text-white{% else %}text-zinc-500{% endif %}">
+                        {{ attempt.percentage|floatformat:0 }}%
+                    </div>
+                    <div class="text-xs {% if attempt.passed %}text-zinc-400{% else %}text-zinc-500{% endif %}">
+                        {% if attempt.passed %}Passed{% else %}Failed{% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center py-8 text-zinc-500">
+                <p>No quiz attempts yet. <a href="{% url 'assessment:home' %}" class="text-white hover:underline">Take your first quiz!</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

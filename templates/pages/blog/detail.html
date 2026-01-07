@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} - SMBShield Blog{% endblock %}
+
+{% block content %}
+<article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Header -->
+    <header class="text-center mb-12">
+        {% if post.category %}
+        <a href="{% url 'blog:category' post.category.slug %}" class="fade-up inline-block px-3 py-1 bg-green-500/10 text-green-400 rounded-full text-sm font-medium mb-4">
+            {{ post.category.name }}
+        </a>
+        {% endif %}
+
+        <h1 class="fade-up font-display text-4xl md:text-5xl font-bold mb-6 text-white" data-delay="0.1">
+            {{ post.title }}
+        </h1>
+
+        <div class="fade-up flex items-center justify-center gap-4 text-zinc-400 text-sm" data-delay="0.2">
+            <span>{{ post.published_at|date:"F d, Y" }}</span>
+            <span class="text-zinc-600">|</span>
+            <span>{{ post.reading_time }} min read</span>
+            <span class="text-zinc-600">|</span>
+            <span>{{ post.views }} views</span>
+        </div>
+    </header>
+
+    <!-- Featured Image -->
+    {% if post.featured_image %}
+    <div class="fade-up mb-12" data-delay="0.3">
+        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full rounded-2xl">
+    </div>
+    {% endif %}
+
+    <!-- Content -->
+    <div class="fade-up prose prose-invert prose-lg max-w-none" data-delay="0.4">
+        <div class="text-white leading-relaxed space-y-6">
+            {{ post.content|safe }}
+        </div>
+    </div>
+
+    <!-- Tags -->
+    {% if post.tags %}
+    <div class="fade-up mt-12 pt-8 border-t border-zinc-800" data-delay="0.5">
+        <div class="flex flex-wrap gap-2">
+            {% for tag in post.tags.all %}
+            <span class="px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full text-sm">{{ tag.name }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Author -->
+    <div class="fade-up mt-12 glass-card rounded-2xl p-6" data-delay="0.6">
+        <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-2xl">
+                {{ post.author.first_name.0|default:"S" }}{{ post.author.last_name.0|default:"S" }}
+            </div>
+            <div>
+                <h3 class="font-semibold text-white">{{ post.author.get_full_name|default:post.author.username }}</h3>
+                <p class="text-zinc-400 text-sm">SMBShield Team</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fade-up mt-12 flex justify-between" data-delay="0.7">
+        <a href="{% url 'blog:index' %}" class="text-green-400 hover:text-green-300 transition-colors">
+            &larr; Back to Blog
+        </a>
+    </nav>
+</article>
+{% endblock %}

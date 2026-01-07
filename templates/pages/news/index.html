@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Security News{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mb-10">
+        <h1 class="fade-up font-display text-4xl font-bold mb-4">Security News</h1>
+        <p class="fade-up text-xl text-zinc-400" data-delay="0.1">
+            AI-curated cybersecurity news for SMBs, updated daily
+        </p>
+    </div>
+    
+    <!-- Filters -->
+    <div class="fade-up flex flex-wrap gap-3 mb-8" data-delay="0.2">
+        <button class="px-4 py-2 rounded-lg bg-shield-500/20 text-shield-400 font-medium">All</button>
+        <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition-colors">Critical</button>
+        <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition-colors">High</button>
+        <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition-colors">Medium</button>
+        <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 transition-colors">Low</button>
+    </div>
+    
+    <!-- Articles Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for article in articles %}
+        <article class="fade-up glass-card rounded-2xl overflow-hidden hover:bg-white/5 transition-all group" data-delay="{{ forloop.counter0|divisibleby:3|yesno:'0,0.1,0.2' }}">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium badge-{{ article.urgency }}">
+                        {{ article.urgency|upper }}
+                    </span>
+                    <span class="text-xs text-zinc-500">{{ article.published_at|date:"M d, Y" }}</span>
+                </div>
+                
+                <h2 class="font-display font-semibold text-lg mb-3 group-hover:text-shield-400 transition-colors">
+                    <a href="{% url 'news:detail' article.id %}">{{ article.title }}</a>
+                </h2>
+                
+                <p class="text-zinc-400 text-sm mb-4 line-clamp-3">
+                    {{ article.summary }}
+                </p>
+                
+                {% if article.owasp_categories %}
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {% for cat in article.owasp_categories|slice:":2" %}
+                    <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">{{ cat }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="flex items-center justify-between">
+                    {% if article.action_required %}
+                    <span class="flex items-center gap-1 text-threat-high text-xs">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                        Action Required
+                    </span>
+                    {% else %}
+                    <span></span>
+                    {% endif %}
+                    
+                    <a href="{% url 'news:detail' article.id %}" class="text-shield-400 hover:text-shield-300 text-sm font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <div class="col-span-full text-center py-16">
+            <div class="text-6xl mb-4">📰</div>
+            <h3 class="font-display text-xl font-semibold mb-2">No News Yet</h3>
+            <p class="text-zinc-400">
+                Run <code class="bg-zinc-800 px-2 py-1 rounded">python manage.py scrape_news</code> to populate news.
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <nav class="mt-12 flex justify-center">
+        <div class="flex gap-2">
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 glass-card rounded-lg hover:bg-white/5">← Previous</a>
+            {% endif %}
+            
+            <span class="px-4 py-2 text-zinc-500">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 glass-card rounded-lg hover:bg-white/5">Next →</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+
+{% block title %}Security Glossary - SMBShield{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+        <div class="fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            <span class="text-sm font-medium text-purple-400">Reference</span>
+        </div>
+
+        <h1 class="fade-up font-display text-5xl md:text-6xl font-bold mb-6" data-delay="0.1">
+            Security<br>
+            <span class="text-gradient-green">Glossary</span>
+        </h1>
+
+        <p class="fade-up text-xl text-zinc-400 max-w-2xl mx-auto" data-delay="0.2">
+            Cybersecurity terms explained in plain language.
+            No jargon, just clarity.
+        </p>
+    </div>
+
+    <!-- Search/Filter -->
+    <div class="fade-up mb-12" data-delay="0.3">
+        <div class="flex flex-wrap gap-2 justify-center">
+            <button class="px-4 py-2 rounded-lg bg-green-500/20 text-green-400 font-medium text-sm">All</button>
+            <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 font-medium text-sm transition-colors">Attacks</button>
+            <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 font-medium text-sm transition-colors">Defense</button>
+            <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 font-medium text-sm transition-colors">Compliance</button>
+            <button class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-zinc-700 font-medium text-sm transition-colors">Encryption</button>
+        </div>
+    </div>
+
+    <!-- Glossary Terms -->
+    <section class="fade-up space-y-4" data-delay="0.4">
+        <!-- A -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">A</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>API (Application Programming Interface)</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        A set of rules that allows different software applications to communicate with each other. APIs can be a security risk if not properly protected, as they often handle sensitive data.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Attack Surface</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        All the points where an attacker could try to enter or extract data from your systems. The larger your attack surface, the more vulnerable you are. Includes websites, APIs, employee devices, and third-party integrations.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Authentication</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        The process of verifying someone's identity. "Who are you?" Common methods include passwords, biometrics, and security tokens. Different from authorization (what you're allowed to do).
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- B -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">B</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Brute Force Attack</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        An attack that tries every possible combination to guess passwords or encryption keys. Like trying every key on a keyring until one works. Prevented by strong passwords, account lockouts, and rate limiting.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Business Email Compromise (BEC)</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        A scam where attackers impersonate executives or vendors via email to trick employees into transferring money or sharing sensitive data. One of the most costly cyber threats to businesses.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- E -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">E</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Encryption</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Converting data into a coded format that can only be read with the correct key. Like putting a message in a locked box that only the recipient can open. Essential for protecting data in transit and at rest.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Endpoint</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Any device that connects to your network: laptops, phones, tablets, servers. Each endpoint is a potential entry point for attackers, which is why endpoint protection is critical.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- M -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">M</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>MFA (Multi-Factor Authentication)</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Requiring two or more verification methods to access an account: something you know (password), something you have (phone), or something you are (fingerprint). Blocks 99% of automated attacks.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Malware</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Short for "malicious software." Any software designed to harm, exploit, or otherwise compromise a computer system. Includes viruses, ransomware, spyware, and trojans.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- P -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">P</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Phishing</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Fraudulent emails, texts, or websites designed to trick you into revealing sensitive information or clicking malicious links. The most common attack vector for businesses. Always verify before clicking.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Penetration Testing (Pen Test)</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        A simulated cyberattack against your systems to check for exploitable vulnerabilities. Ethical hackers try to break in before real attackers do. Should be done regularly by qualified professionals.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- R -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">R</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Ransomware</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Malware that encrypts your files and demands payment for the decryption key. A devastating attack that can shut down businesses. Prevention: regular backups, security training, and keeping software updated.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- S -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">S</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Social Engineering</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        Manipulating people into giving up confidential information or access. Attackers exploit trust, fear, or urgency. Includes phishing, pretexting, and baiting. Your people are often the weakest link.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>SQL Injection</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        An attack where malicious code is inserted into database queries through user input fields. Can allow attackers to read, modify, or delete your database. Part of OWASP Top 10 "Injection" category.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Z -->
+        <div class="mb-8">
+            <h2 class="font-display text-2xl font-bold text-green-400 mb-4 sticky top-24 bg-black/80 backdrop-blur-sm py-2 z-10">Z</h2>
+
+            <div class="space-y-3">
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Zero-Day</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        A vulnerability unknown to the software vendor. Called "zero-day" because developers have had zero days to fix it. Highly valuable to attackers. This is why keeping software updated is crucial the instant patches are released.
+                    </div>
+                </details>
+
+                <details class="glass-card rounded-xl group">
+                    <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                        <span>Zero Trust</span>
+                        <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-6 pb-4 text-zinc-400">
+                        A security model based on "never trust, always verify." No user or device is trusted by default, even inside the network. Access is granted on a need-to-know basis and continuously verified.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fade-up text-center mt-16" data-delay="0.5">
+        <div class="glass-card rounded-3xl p-12 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="relative">
+                <h2 class="font-display text-3xl font-bold mb-4">Want to Learn More?</h2>
+                <p class="text-zinc-400 mb-8 max-w-xl mx-auto">
+                    Our AI tutors can explain any security concept in detail and help you apply it to your business.
+                </p>
+                <a href="{% url 'core:signup' %}" class="inline-block px-10 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-green-500/25">
+                    Start Learning Free
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

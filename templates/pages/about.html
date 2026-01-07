@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+        <h1 class="fade-up font-display text-5xl font-bold mb-6">
+            Cybersecurity Education<br>
+            <span class="text-shield-400">Built for SMBs</span>
+        </h1>
+        <p class="fade-up text-xl text-zinc-400 max-w-2xl mx-auto" data-delay="0.1">
+            We believe every business deserves enterprise-grade security knowledge, 
+            delivered in a way that actually makes sense.
+        </p>
+    </div>
+    
+    <!-- Mission -->
+    <section class="fade-up mb-16" data-delay="0.2">
+        <div class="glass-card rounded-2xl p-10">
+            <h2 class="font-display text-2xl font-bold mb-4">Our Mission</h2>
+            <p class="text-zinc-300 text-lg leading-relaxed">
+                Small and medium businesses are the backbone of the European economy — yet they're 
+                increasingly targeted by cybercriminals who know SMBs often lack dedicated security teams.
+            </p>
+            <p class="text-zinc-300 text-lg leading-relaxed mt-4">
+                SMBShield bridges that gap with AI-powered education that adapts to your team's level, 
+                keeps you updated on real threats, and builds a security-first culture without requiring 
+                a CISO budget.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Why Us -->
+    <section class="fade-up mb-16" data-delay="0.3">
+        <h2 class="font-display text-2xl font-bold mb-8 text-center">Why SMBShield?</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="text-4xl mb-4">🎓</div>
+                <h3 class="font-display font-semibold mb-2">Expert-Level Content</h3>
+                <p class="text-zinc-400 text-sm">Built on OWASP Top 10 framework, the gold standard for web security</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="font-display font-semibold mb-2">AI-Powered</h3>
+                <p class="text-zinc-400 text-sm">Personalized learning paths that adapt to each team member</p>
+            </div>
+            <div class="glass-card rounded-xl p-6 text-center">
+                <div class="text-4xl mb-4">🇪🇺</div>
+                <h3 class="font-display font-semibold mb-2">European Focus</h3>
+                <p class="text-zinc-400 text-sm">GDPR-compliant, NIS2-aware, built for European business context</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team -->
+    <section class="fade-up mb-16" data-delay="0.4">
+        <h2 class="font-display text-2xl font-bold mb-8 text-center">The Team</h2>
+        <div class="glass-card rounded-2xl p-10">
+            <div class="flex items-start gap-6">
+                <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-shield-500 to-blue-500 flex items-center justify-center text-4xl flex-shrink-0">
+                    👨‍💻
+                </div>
+                <div>
+                    <h3 class="font-display text-xl font-bold mb-1">HiTek</h3>
+                    <p class="text-shield-400 mb-3">Founder & AI Engineer</p>
+                    <p class="text-zinc-400">
+                        Former Google Trust & Safety, Meta content moderation, and Apple customer specialist. 
+                        16+ years in tech with deep expertise in AI/ML security and cybersecurity education.
+                        Building the intersection of AI agents and practical security training.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact -->
+    <section class="fade-up text-center" data-delay="0.5">
+        <h2 class="font-display text-2xl font-bold mb-4">Get in Touch</h2>
+        <p class="text-zinc-400 mb-6">Questions about SMBShield? We'd love to hear from you.</p>
+        <a href="mailto:hello@smbshield.eu" class="inline-flex items-center gap-2 px-6 py-3 bg-shield-500 hover:bg-shield-600 rounded-xl font-medium transition-all hover:glow-green">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            hello@smbshield.eu
+        </a>
+    </section>
+</div>
+{% endblock %}

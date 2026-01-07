@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMBShield | Enterprise-Grade AI Security for European SMBs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyber-cyan: #00d9ff;
+            --cyber-purple: #8b5cf6;
+            --metallic-bg: #0a0a0a;
+            --surface-dark: #1a1a1a;
+            --border-grey: #333333;
+        }
+
+        body {
+            background-color: var(--metallic-bg);
+            color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .machined-edge {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid var(--border-grey);
+        }
+
+        .cyber-grid {
+            background-image: linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glow-cyan { box-shadow: 0 0 20px rgba(0, 217, 255, 0.2); }
+        .glow-cyan-strong:hover { box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+        
+        .glass-card {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--cyber-cyan);
+            background: rgba(42, 42, 42, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .btn-primary {
+            background: var(--cyber-cyan);
+            color: black;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--cyber-cyan);
+            color: var(--cyber-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .metallic-text {
+            background: linear-gradient(to bottom, #fff 20%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .floating-glow {
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .pricing-toggle-active {
+            background: var(--cyber-cyan);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--cyber-cyan); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-10 h-10 bg-gradient-to-tr from-cyber-cyan to-cyber-purple rounded-lg flex items-center justify-center p-[2px]">
+                    <div class="w-full h-full bg-black rounded-[6px] flex items-center justify-center">
+                        <svg class="w-6 h-6 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                </div>
+                <span class="text-xl font-bold tracking-tighter text-white">SMB<span class="text-cyber-cyan">SHIELD</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center text-sm font-medium text-neutral-400">
+                <a href="#owasp-section" class="hover:text-cyber-cyan transition-colors">Threats</a>
+                <a href="#solution-section" class="hover:text-cyber-cyan transition-colors">Platform</a>
+                <a href="#pricing" class="hover:text-cyber-cyan transition-colors">Pricing</a>
+                <a href="/login" class="btn-secondary px-6 py-2 rounded-lg ml-4">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 cyber-grid opacity-20"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyber-cyan floating-glow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyber-purple floating-glow"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="hero-reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-cyber-cyan mb-8 tracking-widest uppercase">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-cyan"></span>
+                    </span>
+                    Now aligned with EU AI Act 2026
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 metallic-text leading-[1.1]">
+                    AI Security Intelligence <br>
+                    <span class="text-white">Built for European SMBs</span>
+                </h1>
+                <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    From OWASP LLM Top 10 to EU AI Act compliance—we translate complex threats 
+                    into actionable protection. Built by security specialists from Google & Meta.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                    <a href="#" class="btn-primary px-10 py-4 rounded-lg text-lg flex items-center gap-2 group">
+                        Start Free Trial
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                    <a href="#pricing" class="btn-secondary px-10 py-4 rounded-lg text-lg">
+                        View Pricing
+                    </a>
+                </div>
+                
+                <div class="mt-20 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50">
+                    <div class="flex items-center gap-2 text-sm font-semibold tracking-widest grayscale hover:grayscale-0 transition-all">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg> OWASP ALIGNED
+                    </div>
+                    <div class="flex items-center gap-2 text-sm font-semibold tracking-widest grayscale hover:grayscale-0 transition-all">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> EU AI ACT READY
+                    </div>
+                    <div class="flex items-center gap-2 text-sm font-semibold tracking-widest grayscale hover:grayscale-0 transition-all">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> GDPR COMPLIANT
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OWASP Section -->
+    <section id="owasp-section" class="py-32 relative bg-neutral-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">The OWASP Top 10 for GenAI</h2>
+                <p class="text-neutral-400">Scaling with ChatGPT, Copilot, or Claude? You're exposed to new threats most SMBs don't see coming. We translate technical vulnerabilities into business protection.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-20 h-20 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-red-500/20 border border-red-500/50 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">LLM01: Prompt Injection</h3>
+                    <p class="text-neutral-400 text-sm mb-6 leading-relaxed">Attackers manipulate your AI to ignore instructions and execute unauthorized commands.</p>
+                    <div class="bg-red-500/5 border border-red-500/20 rounded-xl p-4 mb-6">
+                        <p class="text-xs text-red-400 italic">"A support chatbot was tricked into giving unauthorized refunds—costing a retailer €50K in one weekend."</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-full text-[10px] uppercase font-bold text-red-400 tracking-wider">Revenue Loss</span>
+                        <span class="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-full text-[10px] uppercase font-bold text-red-400 tracking-wider">Data Leak</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-20 h-20 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-cyber-purple/20 border border-cyber-purple/50 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-cyber-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">LLM06: Sensitive Data Disclosure</h3>
+                    <p class="text-neutral-400 text-sm mb-6 leading-relaxed">Your AI accidentally reveals confidential business data or private customer information.</p>
+                    <div class="bg-cyber-purple/5 border border-cyber-purple/20 rounded-xl p-4 mb-6">
+                        <p class="text-xs text-cyber-purple italic">"Engineers leaked proprietary code by pasting it into ChatGPT for debugging—now part of the public training model."</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-cyber-purple/10 border border-cyber-purple/30 rounded-full text-[10px] uppercase font-bold text-cyber-purple tracking-wider">GDPR Violation</span>
+                        <span class="px-3 py-1 bg-cyber-purple/10 border border-cyber-purple/30 rounded-full text-[10px] uppercase font-bold text-cyber-purple tracking-wider">IP Loss</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-20 h-20 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-amber-500/20 border border-amber-500/50 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">LLM09: AI Hallucinations</h3>
+                    <p class="text-neutral-400 text-sm mb-6 leading-relaxed">AI generates false info that looks like facts, leading to legal and operational disasters.</p>
+                    <div class="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 mb-6">
+                        <p class="text-xs text-amber-400 italic">"Lawyers cited fake court cases generated by ChatGPT and faced professional sanctions and heavy fines."</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-[10px] uppercase font-bold text-amber-400 tracking-wider">Legal Liability</span>
+                        <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-[10px] uppercase font-bold text-amber-400 tracking-wider">Reputation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <button class="btn-secondary px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-widest">See All 10 Threats</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="solution-section" class="py-32 bg-black overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Your AI Security <br><span class="text-cyber-cyan">Command Center</span></h2>
+                    <p class="text-neutral-400 mb-10 text-lg">Everything you need to protect your AI-powered business—delivered weekly to your inbox and accessible 24/7 through your dashboard.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4 p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all cursor-default group">
+                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyber-cyan to-cyber-purple flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Weekly Intel Digest</h4>
+                                <p class="text-sm text-neutral-500">Curated OWASP updates and threat alerts delivered every Monday. No jargon, just actionable insights.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all cursor-default group">
+                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyber-purple to-cyber-cyan flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Professor Shield AI</h4>
+                                <p class="text-sm text-neutral-500">Ask any OWASP question, get plain-English answers with code examples. 24/7 consultant at your fingertips.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -inset-4 bg-cyber-cyan/20 blur-3xl opacity-20"></div>
+                    <!-- Mock Dashboard Container -->
+                    <div class="relative bg-neutral-900 rounded-2xl border border-white/10 p-2 shadow-2xl">
+                        <div class="bg-black rounded-xl overflow-hidden aspect-video border border-white/10 relative">
+                            <!-- Sidebar -->
+                            <div class="absolute left-0 top-0 bottom-0 w-16 border-r border-white/5 bg-neutral-950 flex flex-col items-center py-6 gap-6">
+                                <div class="w-8 h-8 rounded bg-cyber-cyan/20"></div>
+                                <div class="w-8 h-8 rounded bg-white/5"></div>
+                                <div class="w-8 h-8 rounded bg-white/5"></div>
+                            </div>
+                            <!-- Main Body -->
+                            <div class="ml-16 p-6 h-full">
+                                <div class="flex justify-between items-center mb-6">
+                                    <div class="h-4 w-32 bg-white/10 rounded"></div>
+                                    <div class="h-8 w-8 rounded-full bg-cyber-cyan"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-24 rounded-lg bg-white/5 border border-white/10 p-4">
+                                        <div class="h-3 w-1/2 bg-cyber-cyan/40 rounded mb-4"></div>
+                                        <div class="h-8 w-3/4 bg-white/10 rounded"></div>
+                                    </div>
+                                    <div class="h-24 rounded-lg bg-white/5 border border-white/10 p-4">
+                                        <div class="h-3 w-1/2 bg-cyber-purple/40 rounded mb-4"></div>
+                                        <div class="h-8 w-3/4 bg-white/10 rounded"></div>
+                                    </div>
+                                    <div class="h-32 col-span-2 rounded-lg bg-white/5 border border-white/10 p-4">
+                                        <div class="h-3 w-1/4 bg-white/20 rounded mb-4"></div>
+                                        <div class="space-y-2">
+                                            <div class="h-2 w-full bg-white/5 rounded"></div>
+                                            <div class="h-2 w-full bg-white/5 rounded"></div>
+                                            <div class="h-2 w-3/4 bg-white/5 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Scanline effect -->
+                            <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+                                <div class="w-full h-1 bg-cyber-cyan absolute top-0" style="animation: scanline 4s linear infinite"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-32 relative bg-neutral-950">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-neutral-400">No hidden fees. No enterprise bloat.</p>
+                
+                <!-- Toggle -->
+                <div class="mt-10 flex justify-center">
+                    <div class="bg-neutral-900 p-1 rounded-xl flex border border-white/5">
+                        <button onclick="togglePricing('monthly')" id="btn-monthly" class="px-6 py-2 rounded-lg text-sm font-semibold transition-all pricing-toggle-active">Monthly</button>
+                        <button onclick="togglePricing('yearly')" id="btn-yearly" class="px-6 py-2 rounded-lg text-sm font-semibold text-neutral-500 hover:text-white transition-all">Yearly <span class="text-[10px] ml-1 text-emerald-400">Save 20%</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Awareness -->
+                <div class="glass-card p-10 rounded-2xl flex flex-col border-white/10">
+                    <h3 class="text-xl font-bold mb-2">Awareness</h3>
+                    <p class="text-sm text-neutral-400 mb-8 tracking-wide">STAY INFORMED ON AI SECURITY</p>
+                    <div class="flex items-baseline gap-2 mb-8">
+                        <span class="text-5xl font-bold">€0</span>
+                        <span class="text-neutral-500">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Monthly threat digest
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            OWASP Top 10 guide (PDF)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Community access
+                        </li>
+                    </ul>
+                    <button class="btn-secondary w-full py-4 rounded-lg font-bold">START LEARNING FREE</button>
+                </div>
+
+                <!-- Defense -->
+                <div class="glass-card p-10 rounded-2xl flex flex-col relative border-cyber-cyan/50 shadow-[0_0_40px_rgba(0,217,255,0.1)]">
+                    <div class="absolute -top-4 right-8 bg-gradient-to-r from-cyber-cyan to-cyber-purple text-black text-[10px] font-black uppercase py-1 px-4 rounded-full tracking-tighter">Most Popular</div>
+                    <h3 class="text-xl font-bold mb-2">Defense</h3>
+                    <p class="text-sm text-neutral-400 mb-8 tracking-wide">PROACTIVE AI PROTECTION</p>
+                    <div class="flex items-baseline gap-2 mb-8">
+                        <span class="text-5xl font-bold pricing-val">€49</span>
+                        <span class="text-neutral-500">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Weekly security briefings
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Professor Shield AI (Unlimited)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Threat Intelligence Dashboard
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-neutral-300">
+                            <svg class="w-5 h-5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            EU Compliance Tracker (NIS2, GDPR)
+                        </li>
+                    </ul>
+                    <button class="btn-primary w-full py-4 rounded-lg font-bold">START FREE TRIAL</button>
+                </div>
+            </div>
+            <p class="text-center mt-12 text-neutral-500 text-xs uppercase tracking-widest">14-day free trial • No credit card required • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/5 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-cyber-cyan rounded flex items-center justify-center">
+                            <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+                        </div>
+                        <span class="font-bold text-white uppercase tracking-tighter">SMBShield</span>
+                    </div>
+                    <p class="text-neutral-500 text-sm leading-relaxed mb-6">AI-powered security intelligence for European SMBs. We protect your future while you build it.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 uppercase text-xs tracking-widest">Product</h4>
+                    <ul class="space-y-4 text-sm text-neutral-500">
+                        <li><a href="#" class="hover:text-cyber-cyan transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-cyber-cyan transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-cyber-cyan transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 uppercase text-xs tracking-widest">Company</h4>
+                    <ul class="space-y-4 text-sm text-neutral-500">
+                        <li><a href="#" class="hover:text-cyber-cyan transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-cyber-cyan transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-cyber-cyan transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 uppercase text-xs tracking-widest">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center hover:text-cyber-cyan hover:border-cyber-cyan transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center hover:text-cyber-cyan hover:border-cyber-cyan transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-neutral-600 text-xs uppercase tracking-widest">© 2026 SMBShield Security Group. All Rights Reserved.</p>
+                <div class="flex gap-6 text-xs text-neutral-600 uppercase tracking-widest font-bold">
+                    <a href="#" class="hover:text-cyber-cyan">Privacy Policy</a>
+                    <a href="#" class="hover:text-cyber-cyan">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Entrance Animation
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            tl.from('.hero-reveal > *', {
+                y: 30,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 1,
+                ease: "power4.out"
+            });
+        });
+
+        // Scroll Reveal Animations
+        gsap.utils.toArray('.glass-card').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom-=100px",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        // Pricing Toggle Logic
+        function togglePricing(period) {
+            const monthlyBtn = document.getElementById('btn-monthly');
+            const yearlyBtn = document.getElementById('btn-yearly');
+            const proPrice = document.querySelector('.pricing-val');
+
+            if(period === 'yearly') {
+                monthlyBtn.classList.remove('pricing-toggle-active', 'text-black');
+                monthlyBtn.classList.add('text-neutral-500');
+                yearlyBtn.classList.add('pricing-toggle-active', 'text-black');
+                proPrice.innerText = '€39';
+            } else {
+                yearlyBtn.classList.remove('pricing-toggle-active', 'text-black');
+                yearlyBtn.classList.add('text-neutral-500');
+                monthlyBtn.classList.add('pricing-toggle-active', 'text-black');
+                proPrice.innerText = '€49';
+            }
+            
+            gsap.from('.pricing-val', {
+                scale: 1.1,
+                opacity: 0.5,
+                duration: 0.3
+            });
+        }
+    </script>
+</body>
+</html>

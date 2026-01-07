@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+
+{% block title %}Pricing - SMBShield{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Hero -->
+    <div class="text-center mb-16">
+        <h1 class="fade-up font-display text-5xl md:text-6xl font-bold mb-6">
+            Simple, Transparent<br>
+            <span class="text-gradient-green">Pricing</span>
+        </h1>
+        <p class="fade-up text-xl text-zinc-400 max-w-2xl mx-auto" data-delay="0.1">
+            One plan. Everything included. Built for SMBs who want enterprise-grade security education.
+        </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-20">
+        <!-- Free Tier -->
+        <div class="fade-up glass-card rounded-2xl p-8 relative" data-delay="0.1">
+            <div class="mb-6">
+                <h3 class="font-display text-xl font-bold mb-2">Free</h3>
+                <p class="text-zinc-400 text-sm">Get started with essential resources</p>
+            </div>
+
+            <div class="flex items-baseline gap-1 mb-6">
+                <span class="font-display text-4xl font-bold">$0</span>
+                <span class="text-zinc-500">/forever</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Weekly security briefing</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>OWASP Top 10 overview</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Security glossary access</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Public security news</span>
+                </li>
+            </ul>
+
+            <a href="{% url 'core:free_weekly' %}" class="block w-full text-center px-6 py-3 border border-zinc-700 rounded-xl text-zinc-300 hover:bg-zinc-800 transition-all font-medium">
+                Subscribe Free
+            </a>
+        </div>
+
+        <!-- Pro Tier (Featured) -->
+        <div class="fade-up glass-card rounded-2xl p-8 relative border-2 border-green-500/30 lg:scale-105" data-delay="0.2">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class="px-4 py-1 bg-green-500 rounded-full text-sm font-semibold text-black">Most Popular</span>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="font-display text-xl font-bold mb-2">Pro</h3>
+                <p class="text-zinc-400 text-sm">Complete security education platform</p>
+            </div>
+
+            <div class="flex items-baseline gap-1 mb-6">
+                <span class="font-display text-4xl font-bold">$99</span>
+                <span class="text-zinc-500">/month</span>
+            </div>
+
+            <p class="text-sm text-zinc-500 mb-6">Per company, unlimited users</p>
+
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Everything in Free</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span><strong>Professor Shield</strong> AI tutor</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Full OWASP Top 10 curriculum</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Unlimited AI quizzes</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Progress tracking dashboard</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Daily threat intelligence</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Team progress reports</span>
+                </li>
+            </ul>
+
+            <a href="{% url 'core:signup' %}" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl font-semibold transition-all hover:shadow-lg hover:shadow-green-500/25">
+                Start 14-Day Free Trial
+            </a>
+            <p class="text-xs text-zinc-500 text-center mt-3">No credit card required</p>
+        </div>
+
+        <!-- Enterprise Tier -->
+        <div class="fade-up glass-card rounded-2xl p-8 relative" data-delay="0.3">
+            <div class="mb-6">
+                <h3 class="font-display text-xl font-bold mb-2">Enterprise</h3>
+                <p class="text-zinc-400 text-sm">Custom solutions for larger teams</p>
+            </div>
+
+            <div class="flex items-baseline gap-1 mb-6">
+                <span class="font-display text-4xl font-bold">Custom</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Everything in Pro</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Custom training modules</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>SSO / SAML integration</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Dedicated account manager</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>Priority support</span>
+                </li>
+                <li class="flex items-start gap-3 text-zinc-300">
+                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>SLA guarantee</span>
+                </li>
+            </ul>
+
+            <a href="mailto:enterprise@smbshield.eu" class="block w-full text-center px-6 py-3 border border-zinc-700 rounded-xl text-zinc-300 hover:bg-zinc-800 transition-all font-medium">
+                Contact Sales
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="fade-up max-w-3xl mx-auto" data-delay="0.4">
+        <h2 class="font-display text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
+
+        <div class="space-y-4">
+            <details class="glass-card rounded-xl group">
+                <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                    <span>What happens after the 14-day trial?</span>
+                    <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </summary>
+                <div class="px-6 pb-4 text-zinc-400">
+                    After your trial ends, you'll be asked to add a payment method to continue. You won't be charged during the trial, and you can cancel anytime before it ends with no obligation.
+                </div>
+            </details>
+
+            <details class="glass-card rounded-xl group">
+                <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                    <span>Is there a limit on users?</span>
+                    <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </summary>
+                <div class="px-6 pb-4 text-zinc-400">
+                    No! The Pro plan is priced per company with unlimited users. Whether you have 5 or 50 employees, the price stays the same. We believe security education should scale with your team.
+                </div>
+            </details>
+
+            <details class="glass-card rounded-xl group">
+                <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                    <span>Can I cancel anytime?</span>
+                    <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </summary>
+                <div class="px-6 pb-4 text-zinc-400">
+                    Yes, you can cancel your subscription at any time from your dashboard. Your access will continue until the end of your current billing period.
+                </div>
+            </details>
+
+            <details class="glass-card rounded-xl group">
+                <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                    <span>Is SMBShield GDPR compliant?</span>
+                    <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </summary>
+                <div class="px-6 pb-4 text-zinc-400">
+                    Yes, we're fully GDPR compliant. We're built in Europe, for European businesses. All data is processed and stored in EU data centers, and we're transparent about how we use your data.
+                </div>
+            </details>
+
+            <details class="glass-card rounded-xl group">
+                <summary class="px-6 py-4 cursor-pointer flex items-center justify-between font-medium hover:bg-white/5 rounded-xl transition-colors">
+                    <span>Do you offer discounts for annual billing?</span>
+                    <svg class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </summary>
+                <div class="px-6 pb-4 text-zinc-400">
+                    Yes! Annual billing saves you 2 months. Instead of $99/month, you pay $990/year (equivalent to $82.50/month). Contact us to switch to annual billing.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fade-up mt-20 text-center" data-delay="0.5">
+        <div class="glass-card rounded-3xl p-12 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"></div>
+            <div class="relative">
+                <h2 class="font-display text-3xl font-bold mb-4">Ready to Secure Your Business?</h2>
+                <p class="text-zinc-400 mb-8 max-w-xl mx-auto">Join hundreds of European SMBs building a security-first culture with SMBShield.</p>
+                <a href="{% url 'core:signup' %}" class="inline-block px-10 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-green-500/25">
+                    Start Your Free Trial
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
