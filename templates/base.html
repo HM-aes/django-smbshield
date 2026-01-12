@@ -50,111 +50,101 @@
     <div class="gradient-orb gradient-orb-2"></div>
     <div class="gradient-orb gradient-orb-3"></div>
 
-    <!-- Shadcn-style Navigation with Rounded Edges -->
-    <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl" id="main-nav">
-        <div class="navbar-pill">
-            <div class="flex items-center h-14 px-4">
-                <!-- Logo Area - Far left with space for business logo -->
-                <a href="{% url 'core:home' %}" class="flex items-center gap-2.5 group flex-shrink-0">
-                    <!-- Placeholder for business logo image -->
-                    <div class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all border border-white/10">
-                        <svg class="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-md" id="main-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="{% url 'core:home' %}" class="flex items-center gap-3 flex-shrink-0">
+                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/10">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
                     </div>
-                    <div class="flex flex-col">
-                        <span class="text-base font-semibold text-white leading-tight">SMBShield</span>
-                        <span class="text-[10px] text-white/40 font-medium tracking-wide">AI Security Education</span>
-                    </div>
+                    <span class="text-lg font-semibold text-white">SMBShield</span>
                 </a>
 
-                <!-- Desktop Navigation - Centered with rounded pill section -->
-                <nav class="hidden lg:flex items-center justify-center flex-1 mx-6">
-                    <div class="nav-links-pill flex items-center gap-0.5 px-1.5 py-1">
-                        <a href="{% url 'core:home' %}" class="nav-link-pill">Home</a>
-                        <a href="{% url 'blog:index' %}" class="nav-link-pill">Blog</a>
-                        <a href="{% url 'core:free_weekly' %}" class="nav-link-pill">Free Weekly</a>
+                <!-- Desktop Navigation - Center -->
+                <nav class="hidden lg:flex items-center gap-2">
+                    <a href="{% url 'core:home' %}" class="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all">Home</a>
+                    <a href="{% url 'blog:index' %}" class="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all">Blog</a>
 
-                        <!-- Resources Dropdown -->
-                        <div class="relative" id="resources-dropdown">
-                            <button class="nav-link-pill inline-flex items-center gap-1" id="resources-btn">
-                                Resources
-                                <svg class="w-3.5 h-3.5 transition-transform duration-200" id="resources-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                                </svg>
-                            </button>
+                    <!-- Resources Dropdown -->
+                    <div class="relative" id="resources-dropdown">
+                        <button class="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all inline-flex items-center gap-1.5" id="resources-btn">
+                            Resources
+                            <svg class="w-4 h-4 transition-transform duration-200" id="resources-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
 
-                            <!-- Dropdown Menu -->
-                            <div class="dropdown-menu hidden" id="resources-menu">
-                                <div class="py-2">
-                                    <a href="{% url 'core:owasp_guide' %}" class="dropdown-item">
-                                        <div class="dropdown-icon bg-white/5 text-white/70">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <div class="dropdown-title">OWASP Top 10 Guide</div>
-                                            <div class="dropdown-desc">Learn the top security risks</div>
-                                        </div>
-                                    </a>
-                                    <a href="{% url 'core:security_toolkit' %}" class="dropdown-item">
-                                        <div class="dropdown-icon bg-white/5 text-white/70">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <div class="dropdown-title">Security Toolkit</div>
-                                            <div class="dropdown-desc">Free tools & templates</div>
-                                        </div>
-                                    </a>
-                                    <a href="{% url 'core:glossary' %}" class="dropdown-item">
-                                        <div class="dropdown-icon bg-white/5 text-white/70">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <div class="dropdown-title">Security Glossary</div>
-                                            <div class="dropdown-desc">Terms & definitions</div>
-                                        </div>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a href="{% url 'news:index' %}" class="dropdown-item">
-                                        <div class="dropdown-icon bg-white/5 text-white/70">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <div class="dropdown-title">Security News</div>
-                                            <div class="dropdown-desc">Latest threat intelligence</div>
-                                        </div>
-                                    </a>
-                                </div>
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown-menu hidden" id="resources-menu">
+                            <div class="py-2">
+                                <a href="{% url 'core:owasp_guide' %}" class="dropdown-item">
+                                    <div class="dropdown-icon bg-white/5 text-white/70">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown-title">OWASP Top 10 Guide</div>
+                                        <div class="dropdown-desc">Learn the top security risks</div>
+                                    </div>
+                                </a>
+                                <a href="{% url 'core:security_toolkit' %}" class="dropdown-item">
+                                    <div class="dropdown-icon bg-white/5 text-white/70">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown-title">Security Toolkit</div>
+                                        <div class="dropdown-desc">Free tools & templates</div>
+                                    </div>
+                                </a>
+                                <a href="{% url 'core:glossary' %}" class="dropdown-item">
+                                    <div class="dropdown-icon bg-white/5 text-white/70">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown-title">Security Glossary</div>
+                                        <div class="dropdown-desc">Terms & definitions</div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{% url 'news:index' %}" class="dropdown-item">
+                                    <div class="dropdown-icon bg-white/5 text-white/70">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown-title">Security News</div>
+                                        <div class="dropdown-desc">Latest threat intelligence</div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-
-                        <a href="{% url 'core:about' %}" class="nav-link-pill">About</a>
-                        <a href="{% url 'core:pricing' %}" class="nav-link-pill">Pricing</a>
                     </div>
+
+                    <a href="{% url 'core:about' %}" class="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all">About</a>
+                    <a href="{% url 'core:pricing' %}" class="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all">Pricing</a>
                 </nav>
 
-                <!-- Auth Buttons -->
-                <div class="hidden lg:flex items-center gap-2 flex-shrink-0">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'dashboard:home' %}" class="nav-btn-ghost-pill">Dashboard</a>
-                        <a href="{% url 'core:logout' %}" class="nav-btn-primary-pill">Logout</a>
-                    {% else %}
-                        <a href="{% url 'core:login' %}" class="nav-btn-ghost-pill">Sign in</a>
-                        <a href="{% url 'core:signup' %}" class="nav-btn-primary-pill">Get Started</a>
-                    {% endif %}
+                <!-- CTA Button - Large with proper padding -->
+                <div class="hidden lg:block flex-shrink-0">
+                    <a href="{% url 'dashboard:home' %}" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-white rounded-xl hover:bg-gray-100 transition-all shadow-sm">
+                        Dashboard
+                    </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="lg:hidden p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors" id="mobile-menu-btn">
+                <button class="lg:hidden p-2.5 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-colors" id="mobile-menu-btn">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -163,42 +153,35 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="lg:hidden hidden mt-2" id="mobile-menu">
-            <div class="navbar-pill px-4 py-4 space-y-1">
-                <a href="{% url 'core:home' %}" class="block nav-link-mobile">Home</a>
-                <a href="{% url 'blog:index' %}" class="block nav-link-mobile">Blog</a>
-                <a href="{% url 'core:free_weekly' %}" class="block nav-link-mobile">Free Weekly</a>
+        <div class="lg:hidden hidden border-t border-white/10 bg-black/95 backdrop-blur-md" id="mobile-menu">
+            <div class="px-6 py-6 space-y-2">
+                <a href="{% url 'core:home' %}" class="block px-4 py-3 text-base font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl">Home</a>
+                <a href="{% url 'blog:index' %}" class="block px-4 py-3 text-base font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl">Blog</a>
 
                 <!-- Mobile Resources Section -->
-                <div class="py-2">
-                    <div class="text-xs font-medium text-white/40 uppercase tracking-wider px-3 mb-2">Resources</div>
-                    <a href="{% url 'core:owasp_guide' %}" class="block nav-link-mobile pl-6">OWASP Top 10 Guide</a>
-                    <a href="{% url 'core:security_toolkit' %}" class="block nav-link-mobile pl-6">Security Toolkit</a>
-                    <a href="{% url 'core:glossary' %}" class="block nav-link-mobile pl-6">Security Glossary</a>
-                    <a href="{% url 'news:index' %}" class="block nav-link-mobile pl-6">Security News</a>
+                <div class="py-3">
+                    <div class="text-xs font-semibold text-white/40 uppercase tracking-wider px-4 mb-3">Resources</div>
+                    <a href="{% url 'core:owasp_guide' %}" class="block px-4 py-2.5 text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl ml-2">OWASP Top 10 Guide</a>
+                    <a href="{% url 'core:security_toolkit' %}" class="block px-4 py-2.5 text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl ml-2">Security Toolkit</a>
+                    <a href="{% url 'core:glossary' %}" class="block px-4 py-2.5 text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl ml-2">Security Glossary</a>
+                    <a href="{% url 'news:index' %}" class="block px-4 py-2.5 text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl ml-2">Security News</a>
                 </div>
 
-                <a href="{% url 'core:about' %}" class="block nav-link-mobile">About</a>
-                <a href="{% url 'core:pricing' %}" class="block nav-link-mobile">Pricing</a>
+                <a href="{% url 'core:about' %}" class="block px-4 py-3 text-base font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl">About</a>
+                <a href="{% url 'core:pricing' %}" class="block px-4 py-3 text-base font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl">Pricing</a>
 
-                {% if user.is_authenticated %}
-                <div class="pt-3 border-t border-white/10 mt-3">
-                    <a href="{% url 'dashboard:home' %}" class="block nav-link-mobile">Dashboard</a>
-                    <a href="{% url 'core:logout' %}" class="block nav-link-mobile text-red-400">Logout</a>
+                <div class="pt-4 mt-4 border-t border-white/10">
+                    <a href="{% url 'dashboard:home' %}" class="block w-full text-center px-6 py-4 text-base font-semibold text-black bg-white rounded-xl hover:bg-gray-100 transition-all">
+                        Dashboard
+                    </a>
                 </div>
-                {% else %}
-                <div class="pt-3 flex gap-2 border-t border-white/10 mt-3">
-                    <a href="{% url 'core:login' %}" class="flex-1 text-center nav-btn-ghost-pill">Sign in</a>
-                    <a href="{% url 'core:signup' %}" class="flex-1 text-center nav-btn-primary-pill">Get Started</a>
-                </div>
-                {% endif %}
             </div>
         </div>
     </header>
 
     <!-- Alert Banner (if active) -->
     {% if alert_banner %}
-    <div class="fixed top-16 left-0 right-0 z-40 bg-yellow-500/10 border-b border-yellow-500/20 py-2 px-4">
+    <div class="fixed top-20 left-0 right-0 z-40 bg-yellow-500/10 border-b border-yellow-500/20 py-2 px-4">
         <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 text-sm text-yellow-200">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
@@ -209,7 +192,7 @@
     {% endif %}
 
     <!-- Main Content -->
-    <main class="relative z-10 pt-24 min-h-screen">
+    <main class="relative z-10 pt-20 min-h-screen">
         {% block content %}{% endblock %}
     </main>
 

@@ -132,9 +132,11 @@ Lesson content stored as JSON with keys: `why_it_matters`, `what_it_is`, `real_w
 
 ## Environment Variables
 
-Required:
-- `ANTHROPIC_API_KEY` - For AI agents (if using Anthropic)
-- `GROQ_API_KEY` - For AI agents (if using Groq, default provider)
+Required (at least one LLM provider key):
+- `GROQ_API_KEY` - For Groq (default provider)
+- `ANTHROPIC_API_KEY` - For Anthropic Claude
+- `GOOGLE_API_KEY` - For Google Gemini
+- `DEEPSEEK_API_KEY` - For DeepSeek
 - `SECRET_KEY` - Django secret key
 
 Optional:
@@ -154,3 +156,14 @@ Optional:
 Design colors:
 - Shield Green: `#22c55e` (primary brand, success)
 - Threat levels: Low (green), Medium (amber), High (orange), Critical (red)
+
+## Additional Patterns
+
+### Async Views
+Agent API views use async class-based views. Use `async def post(self, request)` and `await` for agent calls.
+
+### SiteSettings Singleton
+`SiteSettings.get_settings()` returns site-wide configuration including feature flags for enabling/disabling agents (`news_agent_enabled`, `professor_shield_enabled`, `assessment_bot_enabled`).
+
+### Testing
+Uses pytest-django. Run `pytest` from project root. Configure in `pytest.ini` or `pyproject.toml`.
