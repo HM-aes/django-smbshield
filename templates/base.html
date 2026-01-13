@@ -138,9 +138,15 @@
 
                 <!-- CTA Button - Large with proper padding -->
                 <div class="hidden lg:block flex-shrink-0">
+                    {% if user.is_authenticated %}
                     <a href="{% url 'dashboard:home' %}" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-white rounded-xl hover:bg-gray-100 transition-all shadow-sm">
                         Dashboard
                     </a>
+                    {% else %}
+                    <a href="{% url 'core:signup' %}" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-white rounded-xl hover:bg-gray-100 transition-all shadow-sm">
+                        Free Trial
+                    </a>
+                    {% endif %}
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -171,9 +177,15 @@
                 <a href="{% url 'core:pricing' %}" class="block px-4 py-3 text-base font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl">Pricing</a>
 
                 <div class="pt-4 mt-4 border-t border-white/10">
+                    {% if user.is_authenticated %}
                     <a href="{% url 'dashboard:home' %}" class="block w-full text-center px-6 py-4 text-base font-semibold text-black bg-white rounded-xl hover:bg-gray-100 transition-all">
                         Dashboard
                     </a>
+                    {% else %}
+                    <a href="{% url 'core:signup' %}" class="block w-full text-center px-6 py-4 text-base font-semibold text-black bg-white rounded-xl hover:bg-gray-100 transition-all">
+                        Free Trial
+                    </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

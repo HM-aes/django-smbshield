@@ -26,13 +26,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'django.contrib.sites',  # Required for allauth
+
     # Third party
     'django_cotton',
     'django_htmx',
-    
+
+    # Authentication (OAuth)
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+
     # Local apps
     'core',
+    'accounts',  # Auth (OAuth, adapters)
     'agents',
     'dashboard',
     'news',
@@ -40,6 +49,9 @@ INSTALLED_APPS = [
     'education',
     'assessment',
 ]
+
+# Sites framework (required by allauth)
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'smbshield.urls'
@@ -102,10 +115,52 @@ AUTH_PASSWORD_VALIDATORS = [
 # Custom User Model
 AUTH_USER_MODEL = 'core.User'
 
+# Authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default username/password
+    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
+]
+
 # Authentication URLs
 LOGIN_URL = 'core:login'
 LOGIN_REDIRECT_URL = 'dashboard:home'
 LOGOUT_REDIRECT_URL = 'core:home'
+
+# =============================================================================
+# DJANGO-ALLAUTH CONFIGURATION
+# =============================================================================
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}  # Allow both email and username login
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']  # Required fields
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_LOGOUT_ON_GET = True
+
+# Custom adapters for trial setup on OAuth signup
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'accounts.adapters.CustomSocialAccountAdapter'
+
+# Social account settings
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+
+# OAuth provider configuration
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'APP': {
+            'client_id': os.getenv('GOOGLE_OAUTH_CLIENT_ID', ''),
+            'secret': os.getenv('GOOGLE_OAUTH_SECRET', ''),
+        }
+    },
+    'github': {
+        'SCOPE': ['user:email'],
+        'APP': {
+            'client_id': os.getenv('GITHUB_OAUTH_CLIENT_ID', ''),
+            'secret': os.getenv('GITHUB_OAUTH_SECRET', ''),
+        }
+    },
+}
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'

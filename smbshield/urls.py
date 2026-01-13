@@ -9,6 +9,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     
+    # Authentication (OAuth, password reset)
+    path('accounts/', include('allauth.urls')),
+    
     # Public pages
     path('', include('core.urls')),
     path('news/', include('news.urls')),

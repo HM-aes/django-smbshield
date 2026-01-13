@@ -98,6 +98,7 @@ Always use `settings.AUTH_USER_MODEL` when referencing the User model.
 - `/learn/` - Education/lessons
 - `/assess/` - Assessments/quizzes
 - `/api/agents/` - AI agent endpoints (async views)
+- `/accounts/` - django-allauth OAuth routes (Google, GitHub)
 
 ### Access Control (`core/mixins.py`)
 
@@ -144,6 +145,9 @@ Optional:
 - `DEFAULT_LLM_MODEL` - Override default model for chosen provider
 - `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` - Payments
 - `DB_ENGINE`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` - PostgreSQL config
+- `DATABASE_URL` - PostgreSQL connection string (Railway deployment)
+- `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET` - Google OAuth
+- `GITHUB_OAUTH_CLIENT_ID`, `GITHUB_OAUTH_SECRET` - GitHub OAuth
 
 ## Frontend Stack
 
@@ -165,8 +169,16 @@ Agent API views use async class-based views. Use `async def post(self, request)`
 ### SiteSettings Singleton
 `SiteSettings.get_settings()` returns site-wide configuration including feature flags for enabling/disabling agents (`news_agent_enabled`, `professor_shield_enabled`, `assessment_bot_enabled`).
 
+### Authentication (django-allauth)
+
+OAuth authentication via django-allauth with Google and GitHub providers:
+- Custom adapters in `accounts/adapters.py` handle redirect URLs and trial setup for OAuth signups
+- `CustomAccountAdapter` - Standard login/signup redirects to dashboard
+- `CustomSocialAccountAdapter` - OAuth signup initializes trial automatically
+- Configure OAuth credentials via `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET`, `GITHUB_OAUTH_CLIENT_ID`, `GITHUB_OAUTH_SECRET` env vars
+
 ### Testing
 Uses pytest-django. Run `pytest` from project root.
 
 ### Templates
-Templates use django-cotton components. Look for `<c-componentname>` syntax in templates. Component definitions are in `templates/cotton/` directory.
+Templates use django-cotton components. Look for `<c-componentname>` syntax in templates. Page templates are in `templates/pages/` directory.
