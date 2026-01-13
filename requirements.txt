@@ -1,5 +1,5 @@
-# Django 5 (latest for Python 3.11)
-Django>=5.2,<6.0
+# Django 6 (requires Python 3.12+)
+Django>=6.0.1,<7.0
 django-htmx>=1.17.0
 django-cotton>=1.0.0
 whitenoise>=6.6.0

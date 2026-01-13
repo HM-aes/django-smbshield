@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-SMBShield is a B2B SaaS cybersecurity education platform for European SMBs built with Django 5.1+ and Pydantic AI agents. The platform provides OWASP Top 10 training, AI-powered assessments, and curated cybersecurity news.
+SMBShield is a B2B SaaS cybersecurity education platform for European SMBs built with Django 6.0+ (Python 3.12+) and Pydantic AI agents. The platform provides OWASP Top 10 training, AI-powered assessments, and curated cybersecurity news.
 
 ## Commands
 
@@ -165,6 +165,24 @@ Design colors:
 
 ### Async Views
 Agent API views use async class-based views. Use `async def post(self, request)` and `await` for agent calls.
+
+### Django 6.0 Background Tasks
+Built-in task framework for offloading work from HTTP request-response cycle:
+```python
+from django.tasks import task
+
+@task
+def process_heavy_work(data):
+    # Long-running operation
+    return result
+
+# Enqueue task (async: await process_heavy_work.aenqueue(...))
+result = process_heavy_work.enqueue(data=payload)
+```
+- Define tasks in `tasks.py` files by convention
+- Arguments and return values must be JSON-serializable
+- Development uses `ImmediateBackend` (synchronous); production needs worker backend
+- Use `transaction.on_commit()` to avoid race conditions with database
 
 ### SiteSettings Singleton
 `SiteSettings.get_settings()` returns site-wide configuration including feature flags for enabling/disabling agents (`news_agent_enabled`, `professor_shield_enabled`, `assessment_bot_enabled`).

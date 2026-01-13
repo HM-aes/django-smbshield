@@ -1,6 +1,6 @@
 """
 SMBShield - B2B Cybersecurity Education Platform
-Django 5.1+ Settings (Django 6.0 ready)
+Django 6.0 Settings (requires Python 3.12+)
 """
 from pathlib import Path
 import os
@@ -183,6 +183,17 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# =============================================================================
+# DJANGO 6.0 BACKGROUND TASKS
+# =============================================================================
+# Use ImmediateBackend for development (runs tasks synchronously)
+# For production, configure a proper task backend with workers
+TASKS = {
+    "default": {
+        "BACKEND": "django.tasks.backends.immediate.ImmediateBackend"
+    }
+}
 
 # =============================================================================
 # AI & AGENTS CONFIGURATION
