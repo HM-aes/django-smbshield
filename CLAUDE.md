@@ -166,4 +166,7 @@ Agent API views use async class-based views. Use `async def post(self, request)`
 `SiteSettings.get_settings()` returns site-wide configuration including feature flags for enabling/disabling agents (`news_agent_enabled`, `professor_shield_enabled`, `assessment_bot_enabled`).
 
 ### Testing
-Uses pytest-django. Run `pytest` from project root. Configure in `pytest.ini` or `pyproject.toml`.
+Uses pytest-django. Run `pytest` from project root.
+
+### Templates
+Templates use django-cotton components. Look for `<c-componentname>` syntax in templates. Component definitions are in `templates/cotton/` directory.
