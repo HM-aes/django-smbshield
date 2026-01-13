@@ -3,9 +3,14 @@ Django>=5.2,<6.0
 django-htmx>=1.17.0
 django-cotton>=1.0.0
 whitenoise>=6.6.0
+gunicorn>=21.0.0
+
+# Pydantic AI for agents
+pydantic-ai>=0.0.14
 
 # Database
 psycopg2-binary>=2.9.9
+dj-database-url>=2.1.0
 
 # AI - Anthropic, Google Gemini, and DeepSeek
 pydantic>=2.5.0
