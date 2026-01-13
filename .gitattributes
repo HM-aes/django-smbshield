@@ -1,0 +1,8 @@
+# Mark static and generated files as vendored (ignored in language stats)
+static/* linguist-vendored
+staticfiles/* linguist-vendored
+*.css linguist-vendored
+*.min.js linguist-vendored
+
+# Mark Python as the primary language
+*.py linguist-detectable=true
