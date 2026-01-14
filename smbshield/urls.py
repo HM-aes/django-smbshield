@@ -24,6 +24,9 @@ urlpatterns = [
     
     # API endpoints for agents
     path('api/agents/', include('agents.urls')),
+
+    # RAG knowledge base API
+    path('api/rag/', include('rag.urls')),
 ]
 
 if settings.DEBUG:

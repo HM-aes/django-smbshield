@@ -171,11 +171,68 @@ Adapt your teaching to this learner's level and context.
     ) -> str:
         """Suggest the next topic based on performance"""
         return f"""
-        Based on performance ({performance}) in {current_topic}, 
+        Based on performance ({performance}) in {current_topic},
         suggest the optimal next learning topic.
         Consider prerequisites and logical progression.
         """
-        
+
+    @agent.tool
+    async def search_knowledge_base(
+        ctx: RunContext[AgentDependencies],
+        query: str,
+        category: str = "all"
+    ) -> str:
+        """
+        Search the cybersecurity knowledge base for detailed information.
+
+        Use this tool when you need to find specific technical details,
+        best practices, or in-depth explanations from the knowledge base.
+
+        Args:
+            query: The search query (e.g., "SQL injection prevention techniques")
+            category: Filter by category - "owasp", "general", "smb_specific", or "all"
+        """
+        try:
+            from rag.services import rag_retriever
+
+            filter_conditions = None
+            if category and category != "all":
+                filter_conditions = {"category": category}
+
+            # Search the knowledge base
+            results = await rag_retriever.search_async(
+                question=query,
+                filter_conditions=filter_conditions
+            )
+
+            if not results:
+                return "No relevant information found in the knowledge base for this query."
+
+            # Format results for the agent
+            formatted_results = []
+            for i, chunk in enumerate(results[:5], 1):
+                source = chunk.get('source', 'Unknown')
+                page = chunk.get('page')
+                text = chunk.get('text', '')[:500]  # Limit text length
+
+                source_info = f"Source: {source}"
+                if page:
+                    source_info += f", Page {page}"
+
+                formatted_results.append(f"""
+--- Knowledge Base Result {i} ---
+{source_info}
+
+{text}
+""")
+
+            return "\n".join(formatted_results)
+
+        except ImportError:
+            return "Knowledge base search is not available. RAG system not installed."
+        except Exception as e:
+            return f"Error searching knowledge base: {str(e)}"
+
     return agent
 
 def build_lesson_agent():

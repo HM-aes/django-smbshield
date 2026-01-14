@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'blog',
     'education',
     'assessment',
+    'rag',  # RAG knowledge base
 ]
 
 # Sites framework (required by allauth)
@@ -213,6 +214,20 @@ NEWS_SOURCES = [
     'https://www.bleepingcomputer.com/feed/',
     'https://threatpost.com/feed/',
 ]
+
+# =============================================================================
+# RAG (Retrieval-Augmented Generation) CONFIGURATION
+# =============================================================================
+RAG_CONFIG = {
+    'QDRANT_HOST': os.getenv('QDRANT_HOST', 'localhost'),
+    'QDRANT_PORT': int(os.getenv('QDRANT_PORT', 6333)),
+    'QDRANT_API_KEY': os.getenv('QDRANT_API_KEY'),  # For Qdrant Cloud
+    'COLLECTION_NAME': os.getenv('QDRANT_COLLECTION_NAME', 'smbshield_knowledge'),
+    'EMBEDDING_MODEL': os.getenv('EMBEDDING_MODEL_NAME', 'all-MiniLM-L6-v2'),
+    'EMBEDDING_DEVICE': os.getenv('EMBEDDING_DEVICE', 'cpu'),  # cpu, cuda, mps
+    'TOP_K': int(os.getenv('RAG_TOP_K', 5)),
+    'SCORE_THRESHOLD': float(os.getenv('RAG_SCORE_THRESHOLD', 0.7)),
+}
 
 # =============================================================================
 # STRIPE CONFIGURATION (for €99/month subscriptions)
