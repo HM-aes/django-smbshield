@@ -87,7 +87,7 @@ class RAGRetriever:
 
             self._agent = Agent(
                 model=model,
-                result_type=RAGAnswer,
+                output_type=RAGAnswer,
                 system_prompt=self._get_system_prompt()
             )
         return self._agent
@@ -217,7 +217,7 @@ Provide a helpful answer based on the context above. Remember to:
         try:
             # Generate answer using the agent
             result = self.agent.run_sync(prompt)
-            answer = result.data
+            answer = result.output
 
             return {
                 "answer": answer.answer,
@@ -271,7 +271,7 @@ User question: {question}
 
         try:
             result = await self.agent.run(prompt)
-            answer = result.data
+            answer = result.output
 
             return {
                 "answer": answer.answer,

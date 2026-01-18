@@ -33,6 +33,8 @@ class Document(models.Model):
         ('smb_specific', 'SMB-Specific'),
         ('compliance', 'Compliance'),
         ('best_practices', 'Best Practices'),
+        ('threat_intel', 'Threat Intelligence'),
+        ('vendor', 'Vendor Documentation'),
     ]
 
     # Basic info

@@ -243,9 +243,10 @@ class VectorStoreService:
             if filter_conditions:
                 query_filter = self._build_filter(filter_conditions)
 
-            search_results = self.client.search(
+            # Use query_points (new Qdrant client API)
+            search_response = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding,
+                query=query_embedding,
                 limit=top_k,
                 score_threshold=score_threshold,
                 query_filter=query_filter,
@@ -254,7 +255,7 @@ class VectorStoreService:
             )
 
             results = []
-            for hit in search_results:
+            for hit in search_response.points:
                 result = SearchResult(
                     id=hit.id,
                     score=hit.score,
